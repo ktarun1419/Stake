@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="@/assets/black.jpeg" alt="" class="bg" />
+     <img src="@/assets/newback.png" alt="" class="bg" />
     <Topbar/>
     <Sidebar/>
     <router-view/>
@@ -53,6 +53,7 @@ export default class App extends Vue{
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #ffffff;
+  background-color: rgba(35,33,45,255);
  
 }
 #bg {

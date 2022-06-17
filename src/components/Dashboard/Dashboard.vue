@@ -213,8 +213,8 @@ export default class Dashboard extends Vue {
 
 /* Modal Content/Box */
 .modal-content-dashboard {
-  border: 1px solid rgb(151, 147, 147);
-  background-color: rgba(34, 33, 34, 0.9); /* Black w/ opacity */
+  border: 1px solid rgba(42,43,61,255);
+  background-color: rgba(42,43,61,255); /* Black w/ opacity */
   color: white;
   margin: 4% auto; /* 15% from the top and centered */
   padding: 20px;
