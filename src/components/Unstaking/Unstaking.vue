@@ -1,0 +1,146 @@
+<template>
+ <div>
+    <div class="modal-unstake">
+      <div class="modal-unstake-content">
+       
+          
+        <div >
+          <h2 class="heading">Unstake</h2>
+        </div>
+        <!-- <div class="form-group">
+    
+    <input class="form-field" type="Number" placeholder="Enter Amount" >
+    <span>MAX</span>
+    <span>Balance-20000</span>
+</div> -->
+<div class="input-balance-box">
+    <h5 class="input-text">Input</h5>
+    <h5 class="balance-text">Staked-{{amountStaked}}</h5>
+</div>
+<div class="divi1">
+  <input class="input-box" placeholder="0.0" type="number" min="0" v-model="this.amount_unstake" />
+  <button class="max-button" @click="maxfunction">MAX</button>
+  
+  </div>
+  <div class="divu1">
+    <GasTable class="table3"/>
+  </div>
+         <UnstakeButton @click="unstake"/>
+      </div>
+    </div>
+  </div> 
+</template>
+
+<script lang="ts">
+import store from "@/store";
+import { Options, Vue } from 'vue-class-component';
+import UnstakeButton from "./UnstakeButton.vue";
+import GasTable from "@/components/Staking/gastable.vue";
+import transaction from "@/mixins/transaction";
+@Options({
+  data(){
+    return{
+      amount_unstake:null
+    }
+  },
+  components:{
+    UnstakeButton,
+    GasTable
+  },
+  methods:{
+    unstake(){
+      let amt=(this.amount_unstake*1e18).toString()
+      transaction.prototype.unstakingTransaction(amt)
+    },
+    maxfunction(){
+      this.amount_unstake=store.state.amountStaked
+    }
+  }
+})
+export default class Unstaking extends Vue {
+public get amountStaked() : string |null {
+    return store.state.amountStaked
+  }
+}
+</script>
+
+<style>
+
+.table3 {
+  margin-top: 20px;
+  width: 100%
+  
+}.divu1{
+  padding-top: 30px;
+}
+.modal-unstake {
+  display: block;
+  position: fixed; /* Stay in place */
+
+  left: 0;
+  width: 100%; /* Full width */
+  height: 80%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+}
+
+/* Modal Content/Box */
+.modal-unstake-content {
+
+  border: 1px solid rgb(151, 147, 147);
+  background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+  color: white;
+  margin: 3% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border-radius: 20px;
+  width: 30%; /* Could be more or less, depending on screen size */
+  text-align: center;
+  height: 500px;
+}
+.heading {
+  color: rgb(199, 164, 199);
+  font-family: "Inter var", sans-serif;
+}.max-button{
+  border: #99A3BA solid 1px;
+   border-radius: 0px 10px 10px 0px;
+  background: rgba(199, 164, 199, 0.9);
+  color: black;
+  font-size: 20px;
+  height: 61px;
+  
+  float: right;
+  width: 20%;
+}
+.divi1{
+ margin-top: 10px;
+  width: 100%;
+}
+.input-box{
+  padding: 15px;
+  font-size: 25px;
+  border-style: hidden;
+  border: #99A3BA solid 1px;
+  border-radius: 10px 0px 0px 10px;
+  background: transparent;
+  color: #99A3BA;
+  width: 72.5%;
+  float: left;
+  
+}
+
+.input-text{
+  float: left;
+  margin-left: 10px;
+}.balance-text{
+float: right;
+margin-right: 10px;
+}
+.input-balance-box{
+  border: #99A3BA solid 1px;
+  border-radius: 10px;
+  width: 100%;
+  
+  height: 50px;
+  
+}
+
+</style>
