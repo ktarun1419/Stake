@@ -31,7 +31,7 @@
               style="stroke-dashoffset: 23"
             ></circle>
           </svg>
-          <h3 class="heading">{{tokenBalance}} CP</h3>
+          <h3 class="heading">{{ tokenBalance }} CP</h3>
         </div>
         <div class="div1">
           <h3 class="heading">Amount Staked</h3>
@@ -54,25 +54,24 @@
               style="stroke-dashoffset: 32"
             ></circle>
           </svg>
-          <h3 class="heading">{{amountStaked}} CP</h3>
+          <h3 class="heading">{{ amountStaked }} CP</h3>
         </div>
         <div class="div4">
-          
-         <Pricetable/>
+          <Pricetable />
         </div>
         <div class="div3">
           <table class="table1">
             <tr>
+              <td>Total Supply</td>
+              <td>1000000.00</td>
+            </tr>
+            <tr>
               <td>Balance</td>
-              <td>{{tokenBalance}}</td>
+              <td>{{ tokenBalance }}</td>
             </tr>
             <tr>
               <td>Staked Amount</td>
-              <td>{{amountStaked}}</td>
-            </tr>
-            <tr>
-              <td>Reward</td>
-              <td>10000</td>
+              <td>{{ amountStaked }}</td>
             </tr>
           </table>
         </div>
@@ -81,45 +80,64 @@
   </div>
 </template>
 <script lang="ts">
-import { Options, Vue,mixins } from "vue-class-component";
-import Pricetable from '@/components/Dashboard/Pricetable.vue';
+import { Options, Vue } from "vue-class-component";
+import Pricetable from "@/components/Dashboard/Pricetable.vue";
 import store from "@/store";
 @Options({
   components: {
     Pricetable,
   },
-  methods:{
-    stake(){
-      this.$router.replace({name:"Stake"})
+  methods: {
+    //
+    //changing router on clicking on stake button
+    //
+    stake() {
+      this.$router.replace({ name: "Stake" });
     },
-    unstake(){
-      this.$router.replace({name:"Unstake"})
+    //
+    //changing router on clicking on unstake button
+    unstake() {
+      this.$router.replace({ name: "Unstake" });
     },
-    change(){
+     //
+  //function for changing the circle stroke
+  //
+    change() {
       let circle = document.querySelectorAll("circle");
-    if (circle) {
-      circle[1].style.strokeDashoffset = "100";
-    }
-    }
+      if (circle) {
+        let value: number = (store.state.tokenBalance / 1000000) * 100;
+        let value2: number =
+          (store.state.amountStaked / store.state.tokenBalance) * 100;
+        if (value) {
+          circle[1].style.strokeDashoffset = (100 - value).toString();
+        } else {
+          circle[1].style.strokeDashoffset = (100 - 0).toString();
+        }
+        if (value2) {
+          circle[3].style.strokeDashoffset = (100 - value2).toString();
+        } else {
+          circle[3].style.strokeDashoffset = (100 - 0).toString();
+        }
+      }
+    },
   },
-  created(){
-    this.change()
-  }
+  mounted() {
+    this.change();
+  },
 })
 export default class Dashboard extends Vue {
-  private change(): void {
-    
+  //
+  //getting token balance from store
+  //
+  public get tokenBalance(): number | null {
+    return store.state.tokenBalance;
   }
-  
-  public get tokenBalance() : number | null {
-    return store.state.tokenBalance
+  //
+  //getting staked amount from store
+  //
+  public get amountStaked(): string | number {
+    return store.state.amountStaked;
   }
-  
-  public get amountStaked() : string |null {
-    return store.state.amountStaked
-  }
-  
-  
 }
 </script>
 
@@ -237,9 +255,8 @@ export default class Dashboard extends Vue {
   stroke-dasharray: 100 100;
   stroke-linecap: round;
   stroke-width: var(--circle-border-width);
-  /* // For animations...
-  // transition: stroke-dashoffset 1s ease-in-out;
-  // will-change: transform; */
+  transition: stroke-dashoffset 1s ease-in-out;
+  will-change: transform;
 }
 .table1 {
   display: inline-block;

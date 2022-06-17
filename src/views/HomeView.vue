@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     
-    <Dashboard v-if="checker"/>
+    <Dashboard />
   </div>
 </template>
 
@@ -12,7 +12,6 @@ import store from '@/store';
 @Options({
   data(){
     return{
-      checker:store.state.app
     }
   },
   components: {

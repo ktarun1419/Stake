@@ -21,7 +21,7 @@ export default createStore({
     gasTime: '',
     blockTime: '',
     tokenBalance:0.0000,
-    amountStaked:null,
+    amountStaked:0,
     app:true,
 
   },
@@ -91,7 +91,7 @@ export default createStore({
         commit('SET_BINANCE_PRICE', (response.data.USD / response.data.BNB))
         commit('SET_MATIC_PRICE', (response.data.USD / response.data.MATIC))
         commit('SET_XRP_PRICE', (response.data.USD / response.data.XRP))
-        commit('set_gasPrice', gasData.data.fast * 10)
+        commit('set_gasPrice', gasData.data.fast /10 )
         commit('set_gasTime', gasData.data.fastWait)
         commit('set_blockTime', gasData.data.block_time)
       } catch (error) {

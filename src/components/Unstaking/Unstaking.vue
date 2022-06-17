@@ -58,7 +58,7 @@ import transaction from "@/mixins/transaction";
   }
 })
 export default class Unstaking extends Vue {
-public get amountStaked() : string |null {
+public get amountStaked() : string |number {
     return store.state.amountStaked
   }
 }

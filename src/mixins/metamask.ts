@@ -77,11 +77,18 @@ export default class metamask extends Vue{
               chain.then((result) => {
                 console.log(result);
                 if (result==42) {
-                   
-                   store.commit('set_',true)
                 }
                 else{
-                  alert('Please connect to kovan test network')
+                  try {
+                     const web3=new Web3(window.ethereum)
+                      web3.currentProvider.request({
+                       method: 'wallet_switchEthereumChain',
+                         params: [{ chainId: Web3.utils.toHex(42) }],
+                       });
+                   } catch (switchError) {
+                     // This error code indicates that the chain has not been added to MetaMask.
+
+                   }
                 }
                 store.commit("set_network", CHAIN_DATA_LIST[result].network);
               });

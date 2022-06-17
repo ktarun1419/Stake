@@ -89,7 +89,7 @@ export default class Staking extends Vue {
   color: #99A3BA;
   width: 72.5%;
   float: left;
-  margin-left: -45px;
+  
   
 }
 

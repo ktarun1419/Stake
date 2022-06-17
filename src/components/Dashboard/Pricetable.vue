@@ -38,6 +38,7 @@
 <script lang="ts">
 import store from "@/store";
 import { Options, Vue } from "vue-class-component";
+
 @Options({
   
 })
