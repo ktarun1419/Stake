@@ -72,7 +72,7 @@ export default class Staking extends Vue {
   border-radius: 10px;
   width: 100%; 
   margin-top: 150px;
-  background-color: rgba(75, 70, 70, 0.589);
+  background-color: rgba(35,33,45,255);
 }
 .max-button-stake {
    border: #99A3BA solid 1px;

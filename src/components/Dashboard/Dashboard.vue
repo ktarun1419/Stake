@@ -232,7 +232,7 @@ export default class Dashboard extends Vue {
 :root {
   --dot-diameter: 150px;
   --circle-border-width: 4px;
-  --default-color: gainsboro;
+  --default-color: rgba(35,33,45,255);
   --completion-color: rgb(199, 164, 199);
 }
 
