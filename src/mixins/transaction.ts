@@ -64,6 +64,7 @@ export default class transaction extends Vue {
         stake.then((result) => {
             alert(result.transactionHash)
             dataSetup.prototype.tokenBalance()
+            dataSetup.prototype.tokenBalance()
         }
         ).catch((e) => {
             alert(e.message)
@@ -99,6 +100,7 @@ export default class transaction extends Vue {
         unstake.then((result) => {
             console.log(result.transactionHash)
             dataSetup.prototype.stakedAmount()
+            dataSetup.prototype.tokenBalance()
             //result.transactionHash
             //
         }
