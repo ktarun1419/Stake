@@ -16,12 +16,12 @@ export default class UnstakeButton extends Vue {
 .unstaking-button{
   width: 100%;
   
-  margin-top: 40px;
+  
   border-radius: 5px;
   font-family: "Inter var", sans-serif;
   color: black;
   font-size: 20px;
-  background: rgb(247, 245, 247);
+  background: rgba(199, 164, 199, 0.9);
   padding: 10px 10px 10px 10px;
   text-decoration: none;
   

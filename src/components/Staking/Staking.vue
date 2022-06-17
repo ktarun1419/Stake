@@ -22,8 +22,11 @@
         </div>
         <h6 style="float: left; margin-left: 10px">
             You will be staking for x months
-          </h6>
-        <GasTable />
+          </h6><br>
+        <div class="stake-text-info">
+          <h4>Info about APY</h4>
+          <h5> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit, magnam. Earum in soluta consequuntur libero laboriosam debitis officia, maxime veniam r eius aut asperiores ut eligendi.</h5>
+        </div><br>
         <StakingButton v-on:click="transaction" />
       </div>
     </div>
@@ -64,6 +67,13 @@ export default class Staking extends Vue {
 }
 </script>
 <style lang="scss">
+.stake-text-info{
+   border: #99a3ba solid 1px;
+  border-radius: 10px;
+  width: 100%; 
+  margin-top: 150px;
+  background-color: rgba(75, 70, 70, 0.589);
+}
 .max-button-stake {
    border: #99A3BA solid 1px;
    border-radius: 0px 10px 10px 0px;
@@ -123,12 +133,13 @@ export default class Staking extends Vue {
   border: 1px solid rgb(151, 147, 147);
   background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
   color: white;
-  margin: 3% auto; /* 15% from the top and centered */
+  margin: 2% auto; /* 15% from the top and centered */
   padding: 20px;
   border-radius: 20px;
   width: 30%; /* Could be more or less, depending on screen size */
   text-align: center;
-  height: 500px;
+  height: 520px;
+  
 }
 .heading {
   color: rgb(199, 164, 199);

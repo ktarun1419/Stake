@@ -22,9 +22,11 @@
   <button class="max-button" @click="maxfunction">MAX</button>
   
   </div>
-  <div class="divu1">
-    <GasTable class="table3"/>
-  </div>
+  <br>
+        <div class="unstake-text-info">
+          <h4>Warning</h4>
+          <h5> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit, magnam. Earum in soluta consequuntur libero laboriosam debitis officia, maxime veniam r eius aut asperiores ut eligendi.</h5>
+        </div><br>
          <UnstakeButton @click="unstake"/>
       </div>
     </div>
@@ -65,7 +67,13 @@ public get amountStaked() : string |number {
 </script>
 
 <style>
-
+.unstake-text-info{
+   border: #99a3ba solid 1px;
+  border-radius: 10px;
+  width: 100%; 
+  margin-top: 120px;
+  background-color: rgba(241, 132, 132, 0.555);
+}
 .table3 {
   margin-top: 20px;
   width: 100%
