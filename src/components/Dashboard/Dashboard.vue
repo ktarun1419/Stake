@@ -46,6 +46,7 @@
               cx="16"
               cy="16"
             ></circle>
+            
             <circle
               class="circle-container__progress"
               r="16"
@@ -106,8 +107,7 @@ import store from "@/store";
       let circle = document.querySelectorAll("circle");
       if (circle) {
         let value: number = (store.state.tokenBalance / 1000000) * 100;
-        let value2: number =
-          (store.state.amountStaked / store.state.tokenBalance) * 100;
+        let value2: number =(store.state.amountStaked / store.state.tokenBalance) * 100;
         if (value) {
           circle[1].style.strokeDashoffset = (100 - value).toString();
         } else {

@@ -27,10 +27,11 @@
         <br />
 
         <div class="stake-text-info">
-          <h4>Info about APY</h4>
+          <h4>Gasless Transactions</h4>
+          <h5>For gasless transaction staking amount must be >5000 CP.</h5>
           <h5>
-            After each new deposit, all staked CP are subject to a 24H lock-up
-            period! No impermanent loss, no loss of governance rights.
+            CPSTAKE Stakers receive protocol incentives in the form of CP
+            tokens in exchange for taking the risk of securing the protocol
           </h5>
         </div>
         <br />
@@ -74,10 +75,13 @@ import transaction from "@/mixins/transaction";
           staking_line.style.display = "none";
           button.style.cursor = "not-allowed";
         } else {
-          if (staking_line && error_text) {
-            error_text.style.display = "none";
-            staking_line.style.display = "block";
-            button.style.cursor = "pointer";
+          error_text.style.display = "none";
+          staking_line.style.display = "block";
+          button.style.cursor = "pointer";
+          if (newvalue >= 5000) {
+            button.innerText = "Go Gasless";
+          } else {
+            button.innerText = "Stake";
           }
         }
       }
@@ -87,11 +91,16 @@ import transaction from "@/mixins/transaction";
     transaction() {
       //
       //making element ready to send to the smart contract
-      let amt1 = (this.amount * 1e18).toString();
+      let amt1 = (this.amount * 1000000000).toString();
+      amt1=amt1+'000000000'
       if (this.amount <= store.state.tokenBalance && this.amount > 0) {
         //
         //if the condition satisfy we will send the transaction else alert
-        transaction.prototype.stakingTransaction(amt1);
+        if (this.amount < 5000) {
+          transaction.prototype.stakingTransaction(amt1);
+        } else {
+          transaction.prototype.gaslessstakingTransaction(amt1);
+        }
       } else {
         alert("please enter a valid amount");
       }
@@ -164,7 +173,7 @@ export default class Staking extends Vue {
   border-radius: 10px 0px 0px 10px;
   background: transparent;
   color: #99a3ba;
-  width: 72.5%;
+  width: 72%;
   float: left;
 }
 
@@ -199,7 +208,7 @@ export default class Staking extends Vue {
   background-color: rgba(42, 43, 61, 255); /* Black w/ opacity */
   color: white;
   margin: 2% auto; /* 15% from the top and centered */
-  padding: 20px;
+  padding: 1%;
   border-radius: 20px;
   width: 30%; /* Could be more or less, depending on screen size */
   text-align: center;
