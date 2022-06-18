@@ -37,7 +37,7 @@
           </h5>
         </div>
         <br />
-        <UnstakeButton @click="unstake" id="unstake-button" />
+        <button @click="unstake" id="unstake-button" class="unstaking-button">Unstake</button>
       </div>
     </div>
   </div>
